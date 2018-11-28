@@ -20,6 +20,7 @@ class RENDER_PT_Afanasy(bpy.types.Panel):
         col = layout.column()
         col.prop(cgru_props, 'jobname')
         col.prop(cgru_props, 'filepath')
+        col.prop(cgru_props, 'is_flip_fluids_sim')
 
         layout.separator()
         row = layout.row(align=False)

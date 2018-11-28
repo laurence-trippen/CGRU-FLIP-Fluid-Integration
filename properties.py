@@ -105,3 +105,7 @@ class CGRUProperties(bpy.types.PropertyGroup):
     mov_codecs = EnumProperty(
         name="Movie codec",
         items=utils.get_movie_codecs)
+
+    is_flip_fluids_sim = BoolProperty(
+        name='FLIP Fluids simulation',
+        default=False)

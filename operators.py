@@ -23,8 +23,9 @@ layers['{0}'].use = True
 bpy.context.scene.render.filepath = bpy.context.scene.render.filepath \
     + '_' + "{0}" + '_'
 '''
+flip_fluids_script_path = ''
 
-CMD_TEMPLATE = "blender -b \"{blend_scene}\" -y -E {render_engine} " \
+CMD_TEMPLATE = "blender -b \"{blend_scene}\" {flip_fluids} -y -E {render_engine} " \
         "{python_options}" "{output_options} -s @#@ " \
         "-e @#@ -j {frame_inc} -a"
 
@@ -57,6 +58,10 @@ class CGRU_Submit(bpy.types.Operator):
         images = None
         engine_string = sce.render.engine
         sceneModified = False  # if the opriginal scene modified checker
+
+        if cgru_props.is_flip_fluids_sim:
+            prefs = context.user_preferences.addons[__package__].preferences
+            flip_fluids_script_path = prefs.flip_fluids_script_path
 
         # Import Afanasy module:
         import af
@@ -169,6 +174,7 @@ class CGRU_Submit(bpy.types.Operator):
                 python_options = ''
             cmd = CMD_TEMPLATE.format(
                     blend_scene=renderscenefile,
+                    flip_fluids=flip_fluids_script_path
                     render_engine=engine_string,
                     python_options=python_options,
                     output_options=' -o "%s" ' % images if images else '',

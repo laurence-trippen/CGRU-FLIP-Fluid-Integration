@@ -2,8 +2,8 @@
 import os
 
 bl_info = {
-    "name": "CGRU Tools",
-    "author": "Timur Hairulin, Paul Geraskin, Sylvain Maziere",
+    "name": "CGRU Tools: FLIP Fluids Integration",
+    "author": "Timur Hairulin, Paul Geraskin, Sylvain Maziere, Laurence Trippen (FLIP Fluids integration)",
     "version": (1, 0, 0),
     "blender": (2, 7, 1),
     "location": "Properties > Render > Afanasy",
